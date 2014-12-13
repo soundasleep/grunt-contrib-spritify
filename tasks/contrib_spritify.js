@@ -29,15 +29,21 @@ module.exports = function(grunt) {
     var output = options.output;
     var png = options.png;
 
+    var spritifyScript = (grunt.file.exists("node_modules/grunt-contrib-spritify") ? "node_modules/grunt-contrib-spritify/" : "") + "vendor/soundasleep/spritify/spritify.php";
+
     grunt.verbose.writeln("Input: " + input);
     grunt.verbose.writeln("Output: " + output);
     grunt.verbose.writeln("PNG: " + png);
 
-    if (!grunt.file.exists("vendor/soundasleep/spritify/spritify.php")) {
-      grunt.log.write("Installing latest package using Composer...");
+    var changePath = "";
+    if (grunt.file.exists("node_modules/grunt-contrib-spritify")) {
+      changePath = "cd node_modules/grunt-contrib-spritify && ";
+    }
 
+    if (!grunt.file.exists(spritifyScript)) {
       // try installing with composer
-      ret = shell.exec("composer update");
+      grunt.log.write("Installing latest spritify package using Composer...");
+      ret = shell.exec(changePath + "composer update");
       if (ret.code) {
         grunt.warn("Composer update returned " + ret);
       }
@@ -46,7 +52,7 @@ module.exports = function(grunt) {
     var bin = "php";
     var args = [
       "-f",
-      "vendor/soundasleep/spritify/spritify.php",
+      spritifyScript,
       "--",
       "--input",
       input,
