@@ -17,14 +17,14 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-contrib-spritify');
 ```
 
-## The "contrib_spritify" task
+## The "spritify" task
 
 ### Overview
-In your project's Gruntfile, add a section named `contrib_spritify` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `spritify` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  contrib_spritify: {
+  spritify: {
     options: {
       // Task-specific options go here.
     },
@@ -37,47 +37,36 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+#### options.input
+
 Type: `String`
-Default value: `',  '`
 
-A string value that is used to do something with whatever.
+#### options.output
 
-#### options.punctuation
 Type: `String`
-Default value: `'.'`
 
-A string value that is used to do something else with whatever else.
+#### options.png
+
+Type: `String`
+Default value: `sprites.png`
+
+#### options.noRandParam
+
+Type: `boolean`
+Default value: `false`
 
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
 ```js
 grunt.initConfig({
-  contrib_spritify: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  contrib_spritify: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
+  spritify: {
+    spritesheet: {
+      options: {
+        input: 'css/input.css',
+        output: 'css/sprited.css',
+        png: 'images/sprites.png'
+      }
+    }
   },
 });
 ```
