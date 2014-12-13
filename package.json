@@ -1,7 +1,7 @@
 {
   "name": "grunt-contrib-spritify",
   "description": "Process CSS stylesheets to generate sprite images.",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "homepage": "https://github.com/soundasleep/grunt-contrib-spritify",
   "author": {
     "name": "Jevon Wright",
