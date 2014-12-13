@@ -8,9 +8,7 @@
 
 'use strict';
 
-var spawn = require('win-spawn');
-var async = require('async');
-var numCPUs = require('os').cpus().length || 1;
+var shell = require('shelljs');
 
 module.exports = function(grunt) {
 
@@ -18,14 +16,14 @@ module.exports = function(grunt) {
   // creation: http://gruntjs.com/creating-tasks
 
   grunt.registerMultiTask('spritify', 'Process CSS stylesheets to generate sprite images.', function() {
-    var cb = this.async();
-
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       // TODO default options
       "png": "sprites.png",
       "noRandParam": false
     });
+
+    var ret = null;
 
     var input = options.input;
     var output = options.output;
@@ -34,6 +32,16 @@ module.exports = function(grunt) {
     grunt.verbose.writeln("Input: " + input);
     grunt.verbose.writeln("Output: " + output);
     grunt.verbose.writeln("PNG: " + png);
+
+    if (!grunt.file.exists("vendor/soundasleep/spritify/spritify.php")) {
+      grunt.log.write("Installing latest package using Composer...");
+
+      // try installing with composer
+      ret = shell.exec("composer update");
+      if (ret.code) {
+        grunt.warn("Composer update returned " + ret);
+      }
+    }
 
     var bin = "php";
     var args = [
@@ -52,53 +60,14 @@ module.exports = function(grunt) {
       args.push("--no-rand-param");
     }
 
-    grunt.verbose.writeln('Command: ' + bin + ' ' + args.join(' '));
+    var command = bin + " " + args.join(' ');
+    grunt.verbose.writeln('Command: ' + command);
 
-    async.eachLimit([1], numCPUs, function (file, next) {
-      var cp = spawn(bin, args, {stdio: 'inherit'});
+    ret = shell.exec(command);
+    if (ret.code) {
+      grunt.warn("Script returned " + ret);
+    }
 
-      cp.on('error', function (err) {
-        grunt.warn(err);
-      });
-
-      cp.on('close', function (code) {
-        if (code > 0) {
-          return grunt.warn('Exited with error code ' + code);
-        }
-
-        grunt.verbose.writeln('File ' + output + ' created.');
-        next();
-      });
-    }, cb);
-
-
-    // grunt.log.warn("input = " + options.input);
-
-    // // Iterate over all specified file groups.
-    // this.files.forEach(function(f) {
-    //   // Concat specified files.
-    //   var src = f.src.filter(function(filepath) {
-    //     // Warn on and remove invalid source files (if nonull was set).
-    //     if (!grunt.file.exists(filepath)) {
-    //       grunt.log.warn('Source file "' + filepath + '" not found.');
-    //       return false;
-    //     } else {
-    //       return true;
-    //     }
-    //   }).map(function(filepath) {
-    //     // Read file source.
-    //     return grunt.file.read(filepath);
-    //   }).join(grunt.util.normalizelf(options.separator));
-
-    //   // Handle options.
-    //   src += options.punctuation;
-
-    //   // Write the destination file.
-    //   grunt.file.write(f.dest, src);
-
-    //   // Print a success message.
-    //   grunt.log.writeln('File "' + f.dest + '" created.');
-    // });
   });
 
 };
