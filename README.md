@@ -2,6 +2,8 @@
 
 > Process CSS stylesheets to generate sprite images.
 
+This uses the [spritify](https://github.com/soundasleep/spritify) PHP component.
+
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
 
