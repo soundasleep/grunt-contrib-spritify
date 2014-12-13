@@ -1,0 +1,55 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "1824a874920b33d06840c805710ae97b",
+    "packages": [
+        {
+            "name": "soundasleep/spritify",
+            "version": "0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/soundasleep/spritify.git",
+                "reference": "86c243bd185d31734e2f2af384e67a0f31508ee4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/soundasleep/spritify/zipball/86c243bd185d31734e2f2af384e67a0f31508ee4",
+                "reference": "86c243bd185d31734e2f2af384e67a0f31508ee4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.3"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "./"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "description": "A CSS processor to generate spritesheets",
+            "homepage": "https://github.com/soundasleep/spritify",
+            "keywords": [
+                "build",
+                "css",
+                "png",
+                "sprites",
+                "spritesheet"
+            ],
+            "time": "2014-12-13 02:12:21"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "platform": [],
+    "platform-dev": []
+}

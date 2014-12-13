@@ -28,24 +28,37 @@ module.exports = function(grunt) {
       tests: ['tmp']
     },
 
-    // Configuration to be run (and then tested).
-    contrib_spritify: {
-      default_options: {
+    mkdir: {
+      all: {
         options: {
-        },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
-        }
-      },
-      custom_options: {
-        options: {
-          separator: ': ',
-          punctuation: ' !!!'
-        },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
+          create: ['tmp']
         }
       }
+    },
+
+    // Configuration to be run (and then tested).
+    spritify: {
+      media_query: {
+        options: {
+          'input': 'test/fixtures/media-query.css',
+          'output': 'tmp/media-query',
+        }
+      },
+      single_rule: {
+        options: {
+          'input': 'test/fixtures/single-rule.css',
+          'output': 'tmp/single-rule',
+        }
+      },
+      sizes: {
+        options: {
+          input: 'test/fixtures/sizes.css',
+          output: 'tmp/sizes',
+          png: 'sprites-sizes.png',
+          noRandParam: true
+        }
+      }
+      // TODO test custom options
     },
 
     // Unit tests.
@@ -62,10 +75,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-mkdir');
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'contrib_spritify', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'mkdir', 'spritify', 'nodeunit']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);
