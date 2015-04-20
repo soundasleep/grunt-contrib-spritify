@@ -1,8 +1,8 @@
 {
-  "name": "grunt-contrib-spritify",
+  "name": "grunt-soundasleep-spritify",
   "description": "Process CSS stylesheets to generate sprite images.",
-  "version": "0.4.1",
-  "homepage": "https://github.com/soundasleep/grunt-contrib-spritify",
+  "version": "0.5.0",
+  "homepage": "https://github.com/soundasleep/grunt-soundasleep-spritify",
   "author": {
     "name": "Jevon Wright",
     "email": "jevon@jevon.org",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/soundasleep/grunt-contrib-spritify"
+    "url": "https://github.com/soundasleep/grunt-soundasleep-spritify"
   },
   "bugs": {
-    "url": "https://github.com/soundasleep/grunt-contrib-spritify/issues"
+    "url": "https://github.com/soundasleep/grunt-soundasleep-spritify/issues"
   },
   "licenses": [
     {
       "type": "GPL-3.0",
-      "url": "https://github.com/soundasleep/grunt-contrib-spritify/blob/master/LICENSE-GPL-3.0"
+      "url": "https://github.com/soundasleep/grunt-soundasleep-spritify/blob/master/LICENSE-GPL-3.0"
     }
   ],
   "engines": {

@@ -1,6 +1,6 @@
 /*
- * grunt-contrib-spritify
- * https://github.com/soundasleep/grunt-contrib-spritify
+ * grunt-soundasleep-spritify
+ * https://github.com/soundasleep/grunt-soundasleep-spritify
  *
  * Copyright (c) 2014 Jevon Wright
  * Licensed under the GPL-3.0 license.

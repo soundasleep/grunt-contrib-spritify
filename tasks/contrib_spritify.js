@@ -1,6 +1,6 @@
 /*
- * grunt-contrib-spritify
- * https://github.com/soundasleep/grunt-contrib-spritify
+ * grunt-soundasleep-spritify
+ * https://github.com/soundasleep/grunt-soundasleep-spritify
  *
  * Copyright (c) 2014 Jevon Wright
  * Licensed under the GPL-3.0 license.
@@ -29,15 +29,15 @@ module.exports = function(grunt) {
     var output = options.output;
     var png = options.png;
 
-    var spritifyScript = (grunt.file.exists("node_modules/grunt-contrib-spritify") ? "node_modules/grunt-contrib-spritify/" : "") + "vendor/soundasleep/spritify/spritify.php";
+    var spritifyScript = (grunt.file.exists("node_modules/grunt-soundasleep-spritify") ? "node_modules/grunt-soundasleep-spritify/" : "") + "vendor/soundasleep/spritify/spritify.php";
 
     grunt.verbose.writeln("Input: " + input);
     grunt.verbose.writeln("Output: " + output);
     grunt.verbose.writeln("PNG: " + png);
 
     var changePath = "";
-    if (grunt.file.exists("node_modules/grunt-contrib-spritify")) {
-      changePath = "cd node_modules/grunt-contrib-spritify && ";
+    if (grunt.file.exists("node_modules/grunt-soundasleep-spritify")) {
+      changePath = "cd node_modules/grunt-soundasleep-spritify && ";
     }
 
     if (!grunt.file.exists(spritifyScript)) {
